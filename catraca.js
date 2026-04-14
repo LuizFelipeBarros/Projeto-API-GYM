@@ -51,13 +51,14 @@ function atualizarDisplay() {
 async function verificarAcesso() {
     if (cpfInput.length !== 11) return;
 
-    const cpfFormatado = display.value;
+    // Envia CPF sem formatação para corresponder com o BD
+    const cpfSemFormatacao = cpfInput;
 
     try {
         const res = await fetch(`${API_BASE_URL}catraca`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ cpf: cpfFormatado })
+            body: JSON.stringify({ cpf: cpfSemFormatacao })
         });
 
         const data = await res.json();
