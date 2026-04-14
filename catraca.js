@@ -6,6 +6,26 @@ const card = document.getElementById('cardAcesso');
 const statusTexto = document.getElementById('statusTexto');
 const subTexto = document.getElementById('subTexto');
 const display = document.getElementById('displayCPF');
+const dataHora = document.getElementById('dataHora');
+
+function formatarDataHora(data = new Date()) {
+    const dia = String(data.getDate()).padStart(2, '0');
+    const mes = String(data.getMonth() + 1).padStart(2, '0');
+    const ano = data.getFullYear();
+    const horas = String(data.getHours()).padStart(2, '0');
+    const minutos = String(data.getMinutes()).padStart(2, '0');
+    const segundos = String(data.getSeconds()).padStart(2, '0');
+    return `${dia}/${mes}/${ano} - ${horas}:${minutos}:${segundos}`;
+}
+
+function atualizarDataHora() {
+    dataHora.textContent = formatarDataHora();
+}
+
+// Atualiza data/hora ao carregar a página
+atualizarDataHora();
+// Atualiza a cada segundo
+setInterval(atualizarDataHora, 1000);
 
 function addNum(n) {
     if (cpfInput.length < 11) {
@@ -57,6 +77,8 @@ function darFeedback(sucesso, titulo, subtitulo) {
     if (sucesso) {
         body.classList.replace('bg-[#0F172A]', 'bg-emerald-500');
         statusTexto.className = "text-2xl font-black text-emerald-600 uppercase tracking-widest";
+        // Adiciona o horário ao subtítulo quando acesso aprovado
+        subtitulo = subtitulo + ` (${formatarDataHora()})`;
     } else {
         body.classList.replace('bg-[#0F172A]', 'bg-rose-500');
         statusTexto.className = "text-2xl font-black text-rose-600 uppercase tracking-widest";
