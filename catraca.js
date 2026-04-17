@@ -65,15 +65,17 @@ async function verificarAcesso() {
 
         if (res.ok && data.status === "LIBERADO") {
             darFeedback(true, "ACESSO LIBERADO", "Bom treino!");
+        } else if (res.status === 404) {
+            darFeedback(false, "ALUNO NÃO ENCONTRADO", data.mensagem || "CPF não encontrado", "rose");
         } else {
-            darFeedback(false, "ALUNO NÃO ENCONTRADO", data.mensagem || "Procure a recepção");
+            darFeedback(false, "ACESSO NEGADO", data.mensagem || "Procure a recepção", "orange");
         }
     } catch (err) {
         darFeedback(false, "ERRO", "Servidor offline");
     }
 }
 
-function darFeedback(sucesso, titulo, subtitulo) {
+function darFeedback(sucesso, titulo, subtitulo, corErro = 'rose') {
     // 1. Muda cores para o estado de feedback
     if (sucesso) {
         body.classList.replace('bg-[#0F172A]', 'bg-emerald-500');
@@ -81,8 +83,10 @@ function darFeedback(sucesso, titulo, subtitulo) {
         // Adiciona o horário ao subtítulo quando acesso aprovado
         subtitulo = subtitulo + ` (${formatarDataHora()})`;
     } else {
-        body.classList.replace('bg-[#0F172A]', 'bg-rose-500');
-        statusTexto.className = "text-2xl font-black text-rose-600 uppercase tracking-widest";
+        const bgColor = corErro === 'orange' ? 'bg-red-500' : 'bg-slate-500';
+        const textColor = corErro === 'orange' ? 'text-red-600' : 'text-slate-600';
+        body.classList.replace('bg-[#0F172A]', bgColor);
+        statusTexto.className = `text-2xl font-black ${textColor} uppercase tracking-widest`;
     }
 
     // 2. Atualiza Textos
