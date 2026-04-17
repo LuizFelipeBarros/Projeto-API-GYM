@@ -66,7 +66,7 @@ async function verificarAcesso() {
         if (res.ok && data.status === "LIBERADO") {
             darFeedback(true, "ACESSO LIBERADO", "Bom treino!");
         } else {
-            darFeedback(false, "ACESSO NEGADO", data.mensagem || "Procure a recepção");
+            darFeedback(false, "ALUNO NÃO ENCONTRADO", data.mensagem || "Procure a recepção");
         }
     } catch (err) {
         darFeedback(false, "ERRO", "Servidor offline");
