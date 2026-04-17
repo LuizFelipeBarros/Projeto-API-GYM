@@ -2,7 +2,11 @@
 
 Sistema de controle de acesso para academia com verificação de CPF em tempo real via API.
 
-## 📋 Descrição
+## � Acesso Rápido
+
+🌐 **Aplicação em Produção**: https://projeto-api-gym.vercel.app/
+
+## �📋 Descrição
 
 **Fit Deploy Secretary** é uma aplicação web que funciona como uma catraca digital/turnstile para academias. Permite que os usuários se identifiquem através de seu CPF e recebam feedback imediato sobre a liberação de acesso.
 
