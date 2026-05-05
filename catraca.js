@@ -66,9 +66,9 @@ async function verificarAcesso() {
         if (res.ok && data.status === "LIBERADO") {
             darFeedback(true, "ACESSO LIBERADO", "Bom treino!");
         } else if (res.status === 404) {
-            darFeedback(false, "ALUNO NÃO ENCONTRADO", data.mensagem || "CPF não encontrado", "rose");
+            darFeedback(false, "ALUNO NÃO ENCONTRADO", data.mensagem || "CPF não encontrado", "orange");
         } else {
-            darFeedback(false, "ACESSO NEGADO", data.mensagem || "Procure a recepção", "orange");
+            darFeedback(false, "ACESSO NEGADO", data.mensagem || "Procure a recepção", "rose");
         }
     } catch (err) {
         darFeedback(false, "ERRO", "Servidor offline");
@@ -94,7 +94,7 @@ function darFeedback(sucesso, titulo, subtitulo, corErro = 'rose') {
     subTexto.textContent = subtitulo;
     card.classList.add('scale-110'); // Leve zoom no card
 
-    // 3. Reseta após 3 segundos
+    // 3. Reseta após 4 segundos
     setTimeout(() => {
         body.className = "bg-[#0F172A] flex items-center justify-center min-h-screen p-4";
         statusTexto.className = "text-2xl font-bold text-slate-800 uppercase tracking-widest";
@@ -103,5 +103,5 @@ function darFeedback(sucesso, titulo, subtitulo, corErro = 'rose') {
         card.classList.remove('scale-110');
         cpfInput = "";
         atualizarDisplay();
-    }, 3000);
+    }, 4000);
 }
