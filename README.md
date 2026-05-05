@@ -138,7 +138,7 @@ Quando acesso liberado, o horário exato é registrado na mensagem de confirmaç
 - O sistema aguarda 3 segundos antes de resetar para nova entrada
 - Suporta até 11 dígitos no CPF
 
-## 👨‍💻 Desenvolvedor
+## 👨‍💻 Desenvolvido por Luiz e Pedro Vas.
 
 Projeto desenvolvido como sistema de controle de acesso para academia.
 
